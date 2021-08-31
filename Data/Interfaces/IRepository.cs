@@ -1,20 +1,17 @@
-﻿using System.Linq;
+﻿using Data.Entities;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Data.Interfaces
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity> where TEntity : BaseEntity
     {
-        IQueryable<TEntity> FindAll();
-
+        Task<IReadOnlyList<TEntity>> GetAllAsync();
         Task<TEntity> GetByIdAsync(int id);
-
         Task AddAsync(TEntity entity);
-
-        void Update(TEntity entity);
-
-        void Delete(TEntity entity);
-
+        Task UpdateAsync(TEntity entity);
+        Task DeleteAsync (TEntity entity);
         Task DeleteByIdAsync(int id);
     }
 
