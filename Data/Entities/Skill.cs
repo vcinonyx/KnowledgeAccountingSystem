@@ -1,14 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Data.Entities
+﻿namespace Data.Entities
 {
-    public class Skill
+    public class Skill : BaseEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
+        public int KnowledgeAreaId { get; set; }
         public KnowledgeArea KnowledgeArea { get; set; }
-
-        [Range(1, 5)] 
-        public int Grade { get; set; }
     }
 }
