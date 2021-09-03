@@ -1,4 +1,4 @@
-﻿namespace Data.Entities
+﻿namespace DAL.Entities
 {
     public class Skill : BaseEntity
     {

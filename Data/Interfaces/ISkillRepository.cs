@@ -1,9 +1,9 @@
-﻿using Data.Entities;
+﻿using DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Interfaces
+namespace DAL.Interfaces
 {
     public interface ISkillRepository : IRepository<Skill>
     {

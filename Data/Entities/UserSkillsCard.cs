@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Data.Entities
+namespace DAL.Entities
 {
     public class UserSkillsCard : BaseEntity
     {

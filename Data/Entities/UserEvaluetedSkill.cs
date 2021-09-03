@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Data.Entities
+namespace DAL.Entities
 {
     public class UserEvaluetedSkill : BaseEntity
     {

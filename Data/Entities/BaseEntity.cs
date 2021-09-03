@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entities
+namespace DAL.Entities
 {
     public abstract class BaseEntity
     {

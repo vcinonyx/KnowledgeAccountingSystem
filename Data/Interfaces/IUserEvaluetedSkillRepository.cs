@@ -1,10 +1,9 @@
-﻿    using Data.Entities;
+﻿    using DAL.Entities;
 
-namespace Data.Interfaces
+namespace DAL.Interfaces
 {
     public interface IUserEvaluetedSkillRepository : IRepository<UserEvaluetedSkill>
     {
 
     }
-
 }

@@ -1,8 +1,8 @@
-﻿using Data.Entities;
+﻿using DAL.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Data.Interfaces
+namespace DAL.Interfaces
 {
     public interface IKnowledgeAreaRepository : IRepository<KnowledgeArea>
     {   
