@@ -52,24 +52,20 @@ namespace DAL.Repositories
         {
             var knowledgeArea = await _context.KnowledgeAreas.FindAsync(entity.Id);
 
-            if (knowledgeArea == null)
+            if (knowledgeArea != null)
             {
-                 throw new ArgumentException("There is no item with specified id");
+                _context.KnowledgeAreas.Remove(knowledgeArea);
             }
-        
-            _context.KnowledgeAreas.Remove(knowledgeArea);
         }
 
         public async Task DeleteByIdAsync(int id)
         {
             var knowledgeArea = await _context.KnowledgeAreas.FindAsync(id);
-            
-            if (knowledgeArea == null)
+
+            if (knowledgeArea != null)
             {
-                throw new ArgumentException("There is no item with specified id");
+                _context.KnowledgeAreas.Remove(knowledgeArea);
             }
-            
-            _context.KnowledgeAreas.Remove(knowledgeArea);
         }
     }
 }

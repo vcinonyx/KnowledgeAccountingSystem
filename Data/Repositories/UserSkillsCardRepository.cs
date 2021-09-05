@@ -26,24 +26,20 @@ namespace DAL.Repositories
         {
             var userCard = await _context.UserSkillsCards.FindAsync(entity.Id);
 
-            if (userCard == null)
+            if (userCard != null)
             {
-                throw new ArgumentException("No items with specified id");
+                _context.UserSkillsCards.Remove(userCard);
             }
-
-            _context.UserSkillsCards.Remove(userCard);
         }
 
         public async Task DeleteByIdAsync(int id)
         {
             var userCard = await _context.UserSkillsCards.FindAsync(id);
 
-            if (userCard == null)
+            if (userCard != null)
             {
-                throw new ArgumentException("No items with specified id");
+                _context.UserSkillsCards.Remove(userCard);
             }
-
-            _context.UserSkillsCards.Remove(userCard);
         }
 
         public async Task<IReadOnlyList<UserSkillsCard>> GetAllAsync()
@@ -58,19 +54,21 @@ namespace DAL.Repositories
 
         public async Task<UserSkillsCard> GetByIdAsync(int id)
         {
-            return await _context.UserSkillsCards.Include(x => x.UserSkills).FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.UserSkillsCards.Include(x => x.UserSkills)
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IEnumerable<UserEvaluetedSkill>> GetUserSkillsByIdAsync(int userId)
+        public async Task<IEnumerable<UserEvaluetedSkill>> GetUserSkillsByUserIdAsync(string userId)
         {
-            var user = await _context.UserSkillsCards.Include(x => x.UserSkills).FirstOrDefaultAsync(x => x.Id == userId);
-            
-            if (user == null)
+            var user = await _context.UserSkillsCards.Include(x => x.UserSkills)
+                .FirstOrDefaultAsync(x => x.UserId == userId);
+
+            if (user != null)
             {
-                throw new ArgumentException("There is no user with such id");
+                return user.UserSkills;
             }
 
-            return user.UserSkills;
+            return null;
         }
 
         public void Update(UserSkillsCard entity)

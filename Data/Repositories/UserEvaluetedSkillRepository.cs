@@ -26,24 +26,20 @@ namespace DAL.Repositories
         {
             var evaluetedSkill = await _context.UserEvaluetedSkills.FindAsync(entity.Id);
 
-            if (evaluetedSkill == null)
+            if (evaluetedSkill != null)
             {
-                throw new ArgumentNullException("No items with specified id");
+                _context.UserEvaluetedSkills.Remove(evaluetedSkill);
             }
-
-            _context.UserEvaluetedSkills.Remove(evaluetedSkill);
         }
 
         public async Task DeleteByIdAsync(int id)
         {
             var evaluetedSkill = await _context.UserEvaluetedSkills.FindAsync(id);
 
-            if (evaluetedSkill == null)
+            if (evaluetedSkill != null)
             {
-                throw new ArgumentNullException("No items with specified id");
+                _context.UserEvaluetedSkills.Remove(evaluetedSkill);
             }
-
-            _context.UserEvaluetedSkills.Remove(evaluetedSkill);
         }
 
         public async Task<IReadOnlyList<UserEvaluetedSkill>> GetAllAsync()
