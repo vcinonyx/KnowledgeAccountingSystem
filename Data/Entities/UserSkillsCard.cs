@@ -5,7 +5,7 @@ namespace DAL.Entities
 {
     public class UserSkillsCard : BaseEntity
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public ICollection<UserEvaluetedSkill> UserSkills { get; set; } 
     }
 }

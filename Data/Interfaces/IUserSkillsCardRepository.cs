@@ -6,6 +6,6 @@ namespace DAL.Interfaces
 {
     public interface IUserSkillsCardRepository : IRepository<UserSkillsCard>
     {
-        Task<IEnumerable<UserEvaluetedSkill>> GetUserSkillsByIdAsync(int userId);
+        Task<IEnumerable<UserEvaluetedSkill>> GetUserSkillsByUserIdAsync(string userId);
     }
 }
