@@ -22,12 +22,12 @@ namespace DAL.Repositories
             return knowledgeArea.Skills;
         }
 
-        public async Task<IReadOnlyList<KnowledgeArea>> GetAllWithDetailsAsync()
+        public async Task<IEnumerable<KnowledgeArea>> GetAllWithDetailsAsync()
         {
             return await _context.KnowledgeAreas.Include(x => x.Skills).ToListAsync();
         }
 
-        public async Task<IReadOnlyList<KnowledgeArea>> GetAllAsync()
+        public async Task<IEnumerable<KnowledgeArea>> GetAllAsync()
         {
             return await _context.KnowledgeAreas.ToListAsync();
         }

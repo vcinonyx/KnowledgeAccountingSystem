@@ -42,12 +42,12 @@ namespace DAL.Repositories
             }
         }
 
-        public async Task<IReadOnlyList<UserEvaluetedSkill>> GetAllAsync()
+        public async Task<IEnumerable<UserEvaluetedSkill>> GetAllAsync()
         {
             return await _context.UserEvaluetedSkills.ToListAsync();
         }
 
-        public async Task<IReadOnlyList<UserEvaluetedSkill>> GetAllWithDetailsAsync()
+        public async Task<IEnumerable<UserEvaluetedSkill>> GetAllWithDetailsAsync()
         {
             return await _context.UserEvaluetedSkills
                 .Include(x => x.Skill)

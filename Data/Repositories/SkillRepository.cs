@@ -42,12 +42,12 @@ namespace DAL.Repositories
             }
         }
 
-        public async Task<IReadOnlyList<Skill>> GetAllAsync()
+        public async Task<IEnumerable<Skill>> GetAllAsync()
         {
             return await _context.Skills.ToListAsync();
         }
 
-        public async Task<IReadOnlyList<Skill>> GetAllWithDetailsAsync()
+        public async Task<IEnumerable<Skill>> GetAllWithDetailsAsync()
         {
             return await _context.Skills.Include(x => x.KnowledgeArea).ToListAsync();
         }
