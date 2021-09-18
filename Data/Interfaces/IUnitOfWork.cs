@@ -7,7 +7,6 @@ namespace DAL.Interfaces
         IKnowledgeAreaRepository KnowledgeAreaRepository { get; }
         ISkillRepository SkillRepository { get; }
         IUserEvaluetedSkillRepository UserEvaluetedSkillRepository { get; }
-        IUserSkillsCardRepository UserSkillsCardRepository { get; }
         Task<int> SaveAsync();
     }
 }

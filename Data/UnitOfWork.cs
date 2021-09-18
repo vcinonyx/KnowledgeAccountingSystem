@@ -12,7 +12,6 @@ namespace DAL
         public IKnowledgeAreaRepository KnowledgeAreaRepository => new KnowledgeAreaRepository(_context);
         public ISkillRepository SkillRepository => new SkillRepository(_context);
         public IUserEvaluetedSkillRepository UserEvaluetedSkillRepository => new UserEvaluetedSkillRepository(_context);
-        public IUserSkillsCardRepository UserSkillsCardRepository => new UserSkillsCardRepository(_context);
 
         public UnitOfWork(AccountingSystemDbContext context)
         {

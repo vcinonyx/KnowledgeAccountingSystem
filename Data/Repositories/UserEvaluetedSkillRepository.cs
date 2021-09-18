@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using DAL.Interfaces;
 using DAL.Entities;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace DAL.Repositories
 {
-    class UserEvaluetedSkillRepository : IUserEvaluetedSkillRepository
+    public class UserEvaluetedSkillRepository : IUserEvaluetedSkillRepository
     {
         private readonly AccountingSystemDbContext _context;
 
@@ -51,6 +50,7 @@ namespace DAL.Repositories
         {
             return await _context.UserEvaluetedSkills
                 .Include(x => x.Skill)
+                .ThenInclude(x => x.KnowledgeArea)
                 .ToListAsync();
         }
 
@@ -60,6 +60,15 @@ namespace DAL.Repositories
                 .Include(x => x.Skill)
                 .ThenInclude(x => x.KnowledgeArea)
                 .FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<IEnumerable<UserEvaluetedSkill>> GetSkillsByUserIdAsync(string userId)
+        {
+            return await _context.UserEvaluetedSkills
+                .Include(x => x.Skill)
+                .ThenInclude(x => x.KnowledgeArea)
+                .Where(x => x.UserId == userId)
+                .ToListAsync();
         }
 
         public void Update(UserEvaluetedSkill entity)

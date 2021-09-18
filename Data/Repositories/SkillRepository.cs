@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DAL.Entities;
 using DAL.Interfaces;
@@ -8,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
-    class SkillRepository : ISkillRepository
+    public class SkillRepository : ISkillRepository
     {
         private readonly AccountingSystemDbContext _context;
 
