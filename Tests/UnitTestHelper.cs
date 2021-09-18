@@ -73,24 +73,19 @@ namespace Tests
                 new Skill { Id = 35, KnowledgeAreaId = 5, Name = "Android" }
                 );
 
-            var user1_Guid = Guid.NewGuid().ToString();
-            var user2_Guid = Guid.NewGuid().ToString();
-
-            context.UserSkillsCards.AddRange(
-                new UserSkillsCard { Id = 1, UserId = user1_Guid },
-                new UserSkillsCard { Id = 2, UserId = user2_Guid }
-            );
+            var user1_Guid = "49947400-5E0A-43B5-915B-71AB2B081D93";
+            var user2_Guid = "E167DAEB-E4B5-4145-B105-626E2FD480DA";
 
             context.UserEvaluetedSkills.AddRange(
-                new UserEvaluetedSkill { Id = 1, UserSkillsCardId = 1, SkillId = 1, Grade = 1 },
-                new UserEvaluetedSkill { Id = 2, UserSkillsCardId = 1, SkillId = 2, Grade = 2 },
-                new UserEvaluetedSkill { Id = 3, UserSkillsCardId = 1, SkillId = 3, Grade = 3 },
-                new UserEvaluetedSkill { Id = 4, UserSkillsCardId = 1, SkillId = 4, Grade = 4},
+                new UserEvaluetedSkill { Id = 1, UserId = user1_Guid, SkillId = 1, Grade = 1 },
+                new UserEvaluetedSkill { Id = 2, UserId = user1_Guid, SkillId = 2, Grade = 2 },
+                new UserEvaluetedSkill { Id = 3, UserId = user1_Guid, SkillId = 3, Grade = 3 },
+                new UserEvaluetedSkill { Id = 4, UserId = user1_Guid, SkillId = 4, Grade = 4},
 
-                new UserEvaluetedSkill { Id = 5, UserSkillsCardId = 2, SkillId = 5, Grade = 2 },
-                new UserEvaluetedSkill { Id = 6, UserSkillsCardId = 2, SkillId = 6, Grade = 5 },
-                new UserEvaluetedSkill { Id = 7, UserSkillsCardId = 2, SkillId = 7, Grade = 4 },
-                new UserEvaluetedSkill { Id = 8, UserSkillsCardId = 2, SkillId = 8, Grade = 1 }
+                new UserEvaluetedSkill { Id = 5, UserId = user2_Guid, SkillId = 5, Grade = 2 },
+                new UserEvaluetedSkill { Id = 6, UserId = user2_Guid, SkillId = 6, Grade = 5 },
+                new UserEvaluetedSkill { Id = 7, UserId = user2_Guid, SkillId = 7, Grade = 4 },
+                new UserEvaluetedSkill { Id = 8, UserId = user2_Guid, SkillId = 8, Grade = 1 }
             );
 
             context.SaveChanges();
