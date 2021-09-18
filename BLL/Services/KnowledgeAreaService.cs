@@ -25,7 +25,7 @@ namespace BLL.Services
         {
             if (string.IsNullOrEmpty(model.Name))
             {
-                throw new AccountingSystemException("Model name can't be empty or null");
+                throw new AccountingSystemException("Name value can't be empty or null");
             }
 
             var knowledgeArea = _mapper.Map<KnowledgeArea>(model);
@@ -35,6 +35,11 @@ namespace BLL.Services
 
         public async Task AddSkillToKnowledgeAreaAsync(int knowledgeAreaId, SkillDTO skillModel)
         {
+            if (string.IsNullOrEmpty(skillModel.Name))
+            {
+                throw new AccountingSystemException("Name value can't be empty or null");
+            }
+
             var skill = _mapper.Map<Skill>(skillModel);
             await _unitOfWork.SkillRepository.AddAsync(skill);
             await _unitOfWork.SaveAsync();
@@ -68,7 +73,7 @@ namespace BLL.Services
         {
             if (string.IsNullOrEmpty(model.Name))
             {
-                throw new AccountingSystemException("Model name can't be empty or null");
+                throw new AccountingSystemException("Name value can't be empty or null");
             }
 
             var knowledgeArea = _mapper.Map<KnowledgeArea>(model);
