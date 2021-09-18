@@ -31,7 +31,7 @@ namespace BLL.Identity
             {
                 if (!roleManager.Roles.Any(r => r.Name == role))
                 {
-                    await roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
+                    await roleManager.CreateAsync(new IdentityRole { Name = role });
                 }
             }
 
