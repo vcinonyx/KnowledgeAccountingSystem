@@ -10,7 +10,11 @@ namespace BLL
         public AutomapperProfile() 
         {
             CreateMap<KnowledgeArea, KnowledgeAreaDTO>()
-                .ForMember(k => k.SkillIds, c => c.MapFrom(area => area.Skills.Select(x => x.Id)))
+                .ForMember(k => k.Skills, c => c.MapFrom(area => area.Skills.Select(x => new SkillDTO {
+                    Id = x.Id,
+                    KnowledgeAreaId = area.Id,
+                    Name = x.Name,
+                })))
                 .ReverseMap();
 
             CreateMap<Skill, SkillDTO>()

@@ -11,6 +11,6 @@ namespace BLL.DTOs
 
         [Required]
         public string Name { get; set; }
-        public IEnumerable<int> SkillIds { get; set; }
+        public IEnumerable<SkillDTO>  Skills { get; set; }
     }
 }
