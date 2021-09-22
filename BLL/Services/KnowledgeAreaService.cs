@@ -7,6 +7,7 @@ using AutoMapper;
 using DAL.Entities;
 using DAL.Interfaces;
 using BLL.Validation;
+using System.Linq;
 
 namespace BLL.Services
 {
@@ -40,6 +41,12 @@ namespace BLL.Services
                 throw new AccountingSystemException("Name value can't be empty or null");
             }
 
+            var skills = await _unitOfWork.SkillRepository.GetAllAsync();
+            if (skills.Any(x => x.Name.ToUpper() == skillModel.Name.ToUpper()))
+            {
+                throw new AccountingSystemException("Skill with specified name exists");
+            }
+
             var skill = _mapper.Map<Skill>(skillModel);
             await _unitOfWork.SkillRepository.AddAsync(skill);
             await _unitOfWork.SaveAsync();
@@ -54,13 +61,13 @@ namespace BLL.Services
         public async Task<IEnumerable<KnowledgeAreaDTO>> GetAllAsync()
         {
             var knowledgeAreas =  await _unitOfWork.KnowledgeAreaRepository.GetAllWithDetailsAsync();
-            return _mapper.Map<IEnumerable<KnowledgeArea>, IEnumerable<KnowledgeAreaDTO>>(knowledgeAreas);
+            return _mapper.Map<IEnumerable<KnowledgeAreaDTO>>(knowledgeAreas);
         }
 
         public async Task<KnowledgeAreaDTO> GetByIdAsync(int id)
         {
             var knowledgeArea = await _unitOfWork.KnowledgeAreaRepository.GetByIdAsync(id);
-            return _mapper.Map<KnowledgeArea, KnowledgeAreaDTO>(knowledgeArea);
+            return _mapper.Map<KnowledgeAreaDTO>(knowledgeArea);
         }
 
         public async Task<IEnumerable<SkillDTO>> GetSkillsByKnowledgeAreaId(int knowledgeAreaId)

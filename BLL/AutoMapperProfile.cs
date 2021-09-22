@@ -2,6 +2,7 @@
 using DAL.Entities;
 using BLL.DTOs;
 using System.Linq;
+using DAL.Entities.Identity;
 
 namespace BLL
 {
@@ -25,6 +26,8 @@ namespace BLL
                 .ForMember(x => x.KnowledgeAreaName, c =>c.MapFrom(x => x.Skill.KnowledgeArea.Name));
 
             CreateMap<UserEvaluetedSkillDTO, UserEvaluetedSkill>();
+
+            CreateMap<AppUser, UserDTO>();
         }
     }
 }

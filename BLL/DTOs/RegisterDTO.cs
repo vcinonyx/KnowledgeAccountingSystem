@@ -8,6 +8,7 @@ namespace BLL.DTOs
     public class RegisterDTO
     {
         [Required]
+        [RegularExpression("^[A-Z][a-z]*(\\s[A-Z][a-z]*)+$")]
         public string DisplayName { get; set; }
 
         [Required]
